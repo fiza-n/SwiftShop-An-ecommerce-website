@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>git add</title>
+    <title>SwiftShop-An ecommerce website</title>
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,74 +16,100 @@
 </head>
 
 <body>
-    <div class="container">
-       <div class="header">
-         <div class="banner">
-            <img src="./images/freepik__edit-the-provided-banner-image-remove-all-visible-__33988.png" alt=""
-                loading="lazy">
-            <div class="hero-section">
-                <div class="hero-text">
-                    <h1>Discover Style & Tech</h1>
-                    <p>Shop the latest fashion, gadgets, and lifestyle products – all in one place.</p>
-                </div>
-                <div class="shopbutton"><button>Shop Now </button>
+    <div class="cart-page">
+        <div class="cart-container">
+            <h1>Your Cart</h1>
+            <div class="cart-items">
+                <div class="cart-info">
+                    <div class="cart-img"><img src="" alt=""></div>
+                    <div class="cartinfo"></div>
+
                 </div>
             </div>
-            <nav class="nav-container">
-                <div class="nav-bar">
-                    <div class="logo">
-                        <h3>SwiftShop</h3>
+            <div class="cart-bottom">
+                <div class="cart-total"><span id="total-span">Total:</span></div>
+            <div class="checkout-btn"><a href=""><button>Proceed to checkout</button></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="banner">
+                <img src="./images/freepik__edit-the-provided-banner-image-remove-all-visible-__33988.png" alt=""
+                    loading="lazy">
+                <div class="hero-section">
+                    <div class="hero-text">
+                        <h1>Discover Style & Tech</h1>
+                        <p>Shop the latest fashion, gadgets, and lifestyle products – all in one place.</p>
                     </div>
-                    <!-- <div class="search-bar">
+                    <div class="shopbutton"><button>Shop Now </button>
+                    </div>
+                </div>
+                <nav class="nav-container">
+                    <div class="nav-bar">
+                        <div class="logo">
+                            <h3>SwiftShop</h3>
+                        </div>
+                        <!-- <div class="search-bar">
                         <input type="text" placeholder="Search...">
                         <i class="fas fa-search"></i>
                     </div> -->
-                    <div class="cart"><img src="./images/shopping_cart_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
-                            alt="" loading="lazy">
-                        <span id="cart-count">0</span>
+
+                        <div class="cart"><img src="./images/shopping_cart_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
+                                alt="" loading="lazy">
+                            <span id="cart-count">0</span>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <main>
+            <div class="main-section">
+                <div class="product-grid">
+                    <div class="p1">
+                        <div class="product-img">
+                          
+                        </div>
+                        <h2 id="product-title"></h2>
+                        <span id="product-price"></span>
+                        <button id="addtocart">Add to cart</button>
+
                     </div>
                 </div>
-            </nav>
-        </div>
-       </div>
-       <main>
-        <div class="main-section">
-            <div class="product-grid">
-                <div class="p1">
-                    
+            </div>
+        </main>
+        <footer>
+            <div class="footer-container">
+                <div class="footerlogo">
+                    <h3>SwiftShop</h3>
                 </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Stay Connected</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form>
+                    <input type="email" placeholder="Your email">
+                    <button>Subscribe</button>
+                </form>
             </div>
-        </div>
-       </main>
-       <footer>
-        <div class="footer-container">
-            <div class="footerlogo">
-                <h3>SwiftShop</h3>
-            </div>
-    <div class="footer-section">
-      <h3>Support</h3>
-      <ul>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Returns</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
+        </footer>
     </div>
-     <div class="footer-section">
-      <h3>Stay Connected</h3>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-      </div>
-        </div>
-         <form>
-        <input type="email" placeholder="Your email">
-        <button>Subscribe</button>
-      </form>
-        </div>
-       </footer>
-    </div>
+    <script src="app.js"></script>
 </body>
 
 </html>
