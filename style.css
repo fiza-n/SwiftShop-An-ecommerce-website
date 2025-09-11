@@ -201,28 +201,90 @@ form button {
   font-size: 14px;
   color: #aaa;
 }
-.main-section{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.product-grid{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 1rem;
-}
-.p1{
-    border: 1px solid black;
-}
 /* ...existing code... */
+
+/* responsive product grid */
+#product-list{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: 1.25rem;
+   width: 100%;
+   padding: 1.5rem;
+}
+
+/* product card */
+.product-card{
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* hover lift */
+.product-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* image */
+.product-img{
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fafafa;
+  padding: 0.5rem;
+}
+
+/* title and price */
+.product-card h3{
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111;
+  height: 2.6rem; /* keep card heights consistent; adjust if needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card p{
+  font-weight: 700;
+  color: #222;
+}
+
+/* add-to-cart button */
+.product-card button{
+  margin-top: 0.25rem;
+  padding: 0.6rem 0.9rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.12s;
+}
+
+.product-card button:hover{
+  background: #222;
+  transform: translateY(-2px);
+}
+
+.cartpage{
+  display: none;
+}
 .cart-page {
   position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
   z-index: 100;
-  display: none;
+  /* display: none; */
   /* display: flex;
   align-items: flex-start;
 
