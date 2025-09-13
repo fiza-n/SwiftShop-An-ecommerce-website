@@ -276,13 +276,13 @@ form button {
 }
 
 .cartpage{
-  display: none;
+  display: block;
 }
 .cart-page {
   position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
+  /* height: 100vh; */
   z-index: 100;
   /* display: none; */
   /* display: flex;
@@ -306,13 +306,21 @@ form button {
 .cart-container h1{
   text-align: center;
 }
-
-.cart-info{
+.cart-items{
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.cart-info{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    gap: 1rem;
 }
 .cart-bottom{
-  margin-top: 27rem;
+  margin-top: 2rem;
 }
 .checkout-btn a button{
   width: 100%;
@@ -331,4 +339,8 @@ form button {
   background-color: #e55b5b;
   transform: scale(1.05);
 
+}
+#product-img{
+  width: 3.5rem;
+  height: 2.7rem;
 }
