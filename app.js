@@ -52,28 +52,70 @@ function renderProducts(productsArray) {
 // cart DOM container
 const cartPage = document.querySelector('.cart-items');
 
+// ...existing code...
+
+// Render cart and attach per-item handlers
 function renderCart() {
   if (!cartPage) return;
   cartPage.innerHTML = ''; // clear
   if (cart.length === 0) {
     cartPage.innerHTML = '<p>Your cart is empty</p>';
+    const totalSpan = document.getElementById('total-span');
+    if (totalSpan) totalSpan.textContent = 'Total: $0.00';
     return;
   }
+
   cart.forEach(item => {
+    // ensure quantity exists
+    if (!item.quantity) item.quantity = 1;
+
     const el = document.createElement('div');
     el.className = 'cart-info';
-    el.innerHTML = `<img src="${item.image}" alt="${item.title}" id="product-img"> <span>${item.title}</span> <strong>$${item.price}</strong>`;
+    el.dataset.id = item.id;
+
+    el.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" id="product-img">
+      <div class="cartinformation"><span class="cart-title">${item.title}</span>
+      <strong>$${item.price}</strong></div>
+    `;
+
+    const counter = document.createElement('div');
+    counter.classList.add('add-remove-product');
+    counter.innerHTML = `
+      <button class="remove" data-id="${item.id}">-</button>
+      <span class="item-counter" data-id="${item.id}">${item.quantity}</span>
+      <button class="add" data-id="${item.id}">+</button>
+    `;
+
+    // attach handlers for this item's buttons
+    counter.querySelector('.remove').addEventListener('click', () => {
+      item.quantity--;
+      if (item.quantity <= 0) {
+        cart = cart.filter(p => p.id !== item.id);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    });
+
+    counter.querySelector('.add').addEventListener('click', () => {
+      item.quantity++;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    });
+
     cartPage.appendChild(el);
+    cartPage.appendChild(counter);
   });
-  // update total span if present
+
+  // update total span
   const totalSpan = document.getElementById('total-span');
   if (totalSpan) {
-    const total = cart.reduce((s, i) => s + Number(i.price || 0), 0);
+    const total = cart.reduce((s, i) => s + (Number(i.price || 0) * (i.quantity || 1)), 0);
     totalSpan.textContent = `Total: $${total.toFixed(2)}`;
   }
 }
 
-// Add to cart
+// Add to cart (store quantity)
 function addToCart(id) {
   const product = products.find(p => p.id === id);
   if (!product) {
@@ -82,13 +124,14 @@ function addToCart(id) {
   }
   const exists = cart.find(p => p.id === id);
   if (exists) {
-    alert('already in cart!');
-    return;
+    exists.quantity = (exists.quantity || 1) + 1;
+  } else {
+    const prodCopy = Object.assign({}, product, { quantity: 1 });
+    cart.push(prodCopy);
   }
-  cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCart();
-  alert(product.title + " added to cart!");
+  // optional: small toast instead of alert
 }
 
 // Call fetch when page loads
